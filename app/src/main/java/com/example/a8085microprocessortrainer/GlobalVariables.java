@@ -23,6 +23,7 @@ class GlobalVariables {
     static int[] num1 = new int[8];
     static int[] num2 = new int[8];
     static int[] sum = new int[8];
+    static int Interrupt_Enable = 0;
 
     // Final Sum Variable
     static String final_sum = "";

@@ -667,6 +667,21 @@ class OpcodeRecognizer {
                 // DCX SP
                 HexadecimalSubtract.Decrement_16Bit(GlobalVariables.S, GlobalVariables.P);
                 return last_executed;
+            case "F3":
+                // DI
+                GlobalVariables.Interrupt_Enable = 0;
+                return last_executed;
+            case "FB":
+                // EI
+                GlobalVariables.Interrupt_Enable = 1;
+                return last_executed;
+            case "76":
+                // HLT
+                MainActivity.current = "HLT";
+                return last_executed;
+            case "DB":
+                // IN
+                return last_executed;
             default:
                 return last_executed;
         }
