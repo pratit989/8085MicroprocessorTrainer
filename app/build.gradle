@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\Shivr\\KeyStorage\\microprocessor_final.jks')
+            storePassword '9892224543'
+            keyAlias = 'MicroprocessorFinalKey'
+            keyPassword '1Krutika@'
+        }
+        debug {
+            keyAlias = 'MicroprocessorFinalKey'
+            storePassword '9892224543'
+            storeFile file('C:\\Users\\Shivr\\KeyStorage\\microprocessor_final.jks')
+            keyPassword '1Krutika@'
+        }
+    }
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.example.a8085microprocessortrainer"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        maxSdkVersion 28
+        signingConfig signingConfigs.release
+        applicationIdSuffix = '.release'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.3.0-alpha01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha01'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta01'
+}

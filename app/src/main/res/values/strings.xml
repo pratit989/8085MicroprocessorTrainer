@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">8085 Microprocessor Trainer</string>
+    <string name="reset_button">Reset</string>
+    <string name="vct_int">VCT\nINT</string>
+    <string name="shift">SHIFT</string>
+    <string name="c">C</string>
+    <string name="d">D</string>
+    <string name="e">E</string>
+    <string name="f">F</string>
+    <string name="exreg_si">EXREG\nSI</string>
+    <string name="ins_data">INS\nDATA</string>
+    <string name="del_data">DEL\nDATA</string>
+    <string name="h8">8\nH</string>
+    <string name="l9">9\nL</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="go">GO</string>
+    <string name="bm">B.M</string>
+    <string name="rel_exmem">REL\nEXMEM</string>
+    <string name="pch_4">4\nPCH</string>
+    <string name="pcl_5">5\nPCL</string>
+    <string name="sph_6">6\nSPH</string>
+    <string name="spl_7">7\nSPL</string>
+    <string name="string_pre">STRING\nPRE</string>
+    <string name="memc_next">MEMC\nNEXT</string>
+    <string name="fill">FILL\n.</string>
+    <string name="zero">0</string>
+    <string name="one">1</string>
+    <string name="ser_2">2\nSER</string>
+    <string name="three">3</string>
+    <string name="default_keyword1">-Scb</string>
+    <string name="default_keyword2">85</string>
+    <string name="error">ErOr</string>
+</resources>
