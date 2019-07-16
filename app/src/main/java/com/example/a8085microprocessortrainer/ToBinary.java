@@ -15,7 +15,7 @@ class ToBinary {
         String[] values;
         values = a.split("");
         for (int i = 1; i < values.length; i++) {
-            int val = 0;
+            int val;
             switch (values[i]) {
                 case "A":
                     val = 10;

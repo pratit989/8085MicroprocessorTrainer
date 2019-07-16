@@ -45,11 +45,12 @@ class HexadecimalSubtract {
             GlobalVariables.F = "00";
         }
     }
-    static String Subtract(String num1, String num2)
+
+    static String Subtract(String num1)
     {
         String add_zero = "";
         String num1_Binary = ToBinary.to_binary_function(num1);
-        String num2_Binary = ToBinary.to_binary_function(num2);
+        String num2_Binary = ToBinary.to_binary_function("01");
         int num1_Decimal = Integer.parseInt(num1_Binary,2);
         int num2_Decimal = Integer.parseInt(num2_Binary,2);
         if (num1_Decimal==num2_Decimal) {
