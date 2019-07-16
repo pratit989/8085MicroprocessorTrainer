@@ -2,7 +2,7 @@ package com.example.a8085microprocessortrainer;
 
 import java.util.Arrays;
 
-class HexadecimalAdder {
+class HexadecimalAdd {
 
     static String adder_function(String a1, String b1) {
 
@@ -92,20 +92,21 @@ class HexadecimalAdder {
     static class half_adder {
 
         static void half_adder_function(int[] a, int[] b) {
+            GlobalVariables.sum = new int[a.length];
             Arrays.fill(GlobalVariables.sum,0);
             GlobalVariables.carry_in = "00";
             try {
                 try {
-                    GlobalVariables.sum[7] = a[7] + b[7];
+                    GlobalVariables.sum[GlobalVariables.sum.length - 1] = a[GlobalVariables.sum.length - 1] + b[GlobalVariables.sum.length - 1];
                 } catch (Exception ignored) {
                 }
-                if (GlobalVariables.sum[7] > 1) {
-                    GlobalVariables.sum[7] = 0;
+                if (GlobalVariables.sum[GlobalVariables.sum.length - 1] > 1) {
+                    GlobalVariables.sum[GlobalVariables.sum.length - 1] = 0;
                     GlobalVariables.carry_in = "01";
                 } else {
                     GlobalVariables.carry_in = "00";
                 }
-                for (int i = 6; i >= 0; ) {
+                for (int i = GlobalVariables.sum.length - 2; i >= 0; ) {
                     try {
                         full_adder.full_adder_method(a[i], b[i], Integer.parseInt(GlobalVariables.carry_in), i);
                     } catch (Exception ignored) {

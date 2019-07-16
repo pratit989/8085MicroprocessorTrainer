@@ -2,13 +2,13 @@ package com.example.a8085microprocessortrainer;
 
 class OpcodeRecognizer {
 
-    static String opcode_switch(String data, String address) {
-        String last_executed = address;
+    static String opcode_switch(String data, String ProgramCounter) {
+        String last_executed = ProgramCounter;
         switch (data) {
             case "CE":
                 // mnemo = "ACI";
-                HexadecimalAdder.adder_function(GlobalVariables.memory_space[Integer.parseInt(address) + 1], GlobalVariables.A);
-                HexadecimalAdder.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
+                HexadecimalAdd.adder_function(GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1], GlobalVariables.A);
+                HexadecimalAdd.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
                 String hex = GlobalVariables.final_sum;
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
@@ -18,12 +18,12 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "8F":
                 // mnemo = "ADC A";
-                HexadecimalAdder.adder_function(GlobalVariables.A, GlobalVariables.A);
-                HexadecimalAdder.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
+                HexadecimalAdd.adder_function(GlobalVariables.A, GlobalVariables.A);
+                HexadecimalAdd.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
                 hex = GlobalVariables.final_sum;
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
@@ -33,12 +33,12 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "88":
                 // mnemo = "ADC B";
-                HexadecimalAdder.adder_function(GlobalVariables.B, GlobalVariables.A);
-                HexadecimalAdder.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
+                HexadecimalAdd.adder_function(GlobalVariables.B, GlobalVariables.A);
+                HexadecimalAdd.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
                 hex = GlobalVariables.final_sum;
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
@@ -48,12 +48,12 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "89":
                 // mnemo = "ADC C";
-                HexadecimalAdder.adder_function(GlobalVariables.C, GlobalVariables.A);
-                HexadecimalAdder.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
+                HexadecimalAdd.adder_function(GlobalVariables.C, GlobalVariables.A);
+                HexadecimalAdd.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
                 hex = GlobalVariables.final_sum;
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
@@ -63,12 +63,12 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "8A":
                 // mnemo = "ADC D";
-                HexadecimalAdder.adder_function(GlobalVariables.D, GlobalVariables.A);
-                HexadecimalAdder.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
+                HexadecimalAdd.adder_function(GlobalVariables.D, GlobalVariables.A);
+                HexadecimalAdd.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
                 hex = GlobalVariables.final_sum;
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
@@ -78,12 +78,12 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "8B":
                 // mnemo = "ADC E";
-                HexadecimalAdder.adder_function(GlobalVariables.E, GlobalVariables.A);
-                HexadecimalAdder.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
+                HexadecimalAdd.adder_function(GlobalVariables.E, GlobalVariables.A);
+                HexadecimalAdd.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
                 hex = GlobalVariables.final_sum;
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
@@ -93,12 +93,12 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "8C":
                 // mnemo = "ADC H";
-                HexadecimalAdder.adder_function(GlobalVariables.H, GlobalVariables.A);
-                HexadecimalAdder.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
+                HexadecimalAdd.adder_function(GlobalVariables.H, GlobalVariables.A);
+                HexadecimalAdd.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
                 hex = GlobalVariables.final_sum;
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
@@ -108,12 +108,12 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "8D":
                 // mnemo = "ADC L";
-                HexadecimalAdder.adder_function(GlobalVariables.L, GlobalVariables.A);
-                HexadecimalAdder.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
+                HexadecimalAdd.adder_function(GlobalVariables.L, GlobalVariables.A);
+                HexadecimalAdd.adder_function(GlobalVariables.final_sum, GlobalVariables.B0_CY);
                 hex = GlobalVariables.final_sum;
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
@@ -123,7 +123,7 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "8E":
                 // mnemo = "ADC M";
@@ -131,7 +131,7 @@ class OpcodeRecognizer {
                 // Getting Data from M memory location
                 String M_DATA = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.M)];
                 // Adding and Storing final answer in Accumulator
-                hex = HexadecimalAdder.adder_function(HexadecimalAdder.adder_function(M_DATA, GlobalVariables.A), GlobalVariables.B0_CY);
+                hex = HexadecimalAdd.adder_function(HexadecimalAdd.adder_function(M_DATA, GlobalVariables.A), GlobalVariables.B0_CY);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -140,11 +140,11 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "87":
                 // mnemo = "ADD A";
-                hex = HexadecimalAdder.adder_function(GlobalVariables.A, GlobalVariables.A);
+                hex = HexadecimalAdd.adder_function(GlobalVariables.A, GlobalVariables.A);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -156,7 +156,7 @@ class OpcodeRecognizer {
                 return last_executed;
             case "80":
                 // mnemo = "ADD B";
-                hex = HexadecimalAdder.adder_function(GlobalVariables.B, GlobalVariables.A);
+                hex = HexadecimalAdd.adder_function(GlobalVariables.B, GlobalVariables.A);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -168,7 +168,7 @@ class OpcodeRecognizer {
                 return last_executed;
             case "81":
                 // mnemo = "ADD C";
-                hex = HexadecimalAdder.adder_function(GlobalVariables.C, GlobalVariables.A);
+                hex = HexadecimalAdd.adder_function(GlobalVariables.C, GlobalVariables.A);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -180,7 +180,7 @@ class OpcodeRecognizer {
                 return last_executed;
             case "82":
                 // mnemo = "ADD D";
-                hex = HexadecimalAdder.adder_function(GlobalVariables.D, GlobalVariables.A);
+                hex = HexadecimalAdd.adder_function(GlobalVariables.D, GlobalVariables.A);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -192,7 +192,7 @@ class OpcodeRecognizer {
                 return last_executed;
             case "83":
                 // mnemo = "ADD E";
-                hex = HexadecimalAdder.adder_function(GlobalVariables.E, GlobalVariables.A);
+                hex = HexadecimalAdd.adder_function(GlobalVariables.E, GlobalVariables.A);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -204,7 +204,7 @@ class OpcodeRecognizer {
                 return last_executed;
             case "84":
                 // mnemo = "ADD H";
-                hex = HexadecimalAdder.adder_function(GlobalVariables.H, GlobalVariables.A);
+                hex = HexadecimalAdd.adder_function(GlobalVariables.H, GlobalVariables.A);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -216,7 +216,7 @@ class OpcodeRecognizer {
                 return last_executed;
             case "85":
                 // mnemo = "ADD L";
-                hex = HexadecimalAdder.adder_function(GlobalVariables.L, GlobalVariables.A);
+                hex = HexadecimalAdd.adder_function(GlobalVariables.L, GlobalVariables.A);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -232,7 +232,7 @@ class OpcodeRecognizer {
                 // Getting Data from M memory location
                 M_DATA = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.M)];
                 // Adding and Storing final answer in Accumulator
-                hex = HexadecimalAdder.adder_function(M_DATA, GlobalVariables.A);
+                hex = HexadecimalAdd.adder_function(M_DATA, GlobalVariables.A);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -244,7 +244,7 @@ class OpcodeRecognizer {
                 return last_executed;
             case "C6":
                 // mnemo = "ADI";
-                hex = HexadecimalAdder.adder_function(GlobalVariables.memory_space[Integer.parseInt(address) + 1], GlobalVariables.A);
+                hex = HexadecimalAdd.adder_function(GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1], GlobalVariables.A);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -253,7 +253,7 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "A7":
                 // ANA A
@@ -357,7 +357,7 @@ class OpcodeRecognizer {
                 return last_executed;
             case "E6":
                 // ANI
-                hex = LogicalOperators.AND(GlobalVariables.memory_space[Integer.parseInt(address) + 1], GlobalVariables.A);
+                hex = LogicalOperators.AND(GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1], GlobalVariables.A);
                 if (!hex.substring(0, 2).equals("00") && hex.length() == 4) {
                     GlobalVariables.A = hex.substring(0, 2);
                     GlobalVariables.B = hex.substring(2);
@@ -366,30 +366,33 @@ class OpcodeRecognizer {
                 } else {
                     GlobalVariables.A = hex;
                 }
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "CD":
                 // CALL
-                String stack = address;
-                GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(address) + 2];
-                GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(address) + 1];
+                GlobalVariables.S = ProgramCounter.substring(0, 2);
+                GlobalVariables.P = ProgramCounter.substring(2);
+                GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                 last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
                 return last_executed;
             case "DC":
                 // CC
                 if (GlobalVariables.B0_CY.equals("01")) {
-                    stack = address;
-                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(address) + 2];
-                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(address) + 1];
+                    GlobalVariables.S = ProgramCounter.substring(0, 2);
+                    GlobalVariables.P = ProgramCounter.substring(2);
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                     last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
                     return last_executed;
                 }
             case "FC":
                 // CM
                 if (GlobalVariables.B7_S.equals("01")) {
-                    stack = address;
-                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(address) + 2];
-                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(address) + 1];
+                    GlobalVariables.S = ProgramCounter.substring(0, 2);
+                    GlobalVariables.P = ProgramCounter.substring(2);
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                     last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
                     return last_executed;
                 }
@@ -455,59 +458,65 @@ class OpcodeRecognizer {
             case "D4":
                 // CNC
                 if (!GlobalVariables.B0_CY.equals("01")) {
-                    stack = address;
-                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(address) + 2];
-                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(address) + 1];
+                    GlobalVariables.S = ProgramCounter.substring(0, 2);
+                    GlobalVariables.P = ProgramCounter.substring(2);
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                     last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
                     return last_executed;
                 }
             case "C4":
                 // CNZ
                 if (!GlobalVariables.B6_Z.equals("01")) {
-                    stack = address;
-                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(address) + 2];
-                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(address) + 1];
+                    GlobalVariables.S = ProgramCounter.substring(0, 2);
+                    GlobalVariables.P = ProgramCounter.substring(2);
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                     last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
                     return last_executed;
                 }
             case "F4":
                 // CP
                 if (!GlobalVariables.B7_S.equals("01")) {
-                    stack = address;
-                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(address) + 2];
-                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(address) + 1];
+                    GlobalVariables.S = ProgramCounter.substring(0, 2);
+                    GlobalVariables.P = ProgramCounter.substring(2);
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                     last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
                     return last_executed;
                 }
             case "EC":
                 // CPE
                 if (GlobalVariables.B2_P.equals("01")) {
-                    stack = address;
-                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(address) + 2];
-                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(address) + 1];
+                    GlobalVariables.S = ProgramCounter.substring(0, 2);
+                    GlobalVariables.P = ProgramCounter.substring(2);
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                     last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
                     return last_executed;
                 }
             case "FE":
                 // CPI
-                HexadecimalSubtract.Compare(GlobalVariables.A, GlobalVariables.memory_space[Integer.parseInt(address) + 1]);
-                last_executed = Integer.toString(Integer.parseInt(address) + 1);
+                HexadecimalSubtract.Compare(GlobalVariables.A, GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1]);
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
             case "E4":
                 // CPO
                 if (!GlobalVariables.B2_P.equals("01")) {
-                    stack = address;
-                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(address) + 2];
-                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(address) + 1];
+                    GlobalVariables.S = ProgramCounter.substring(0, 2);
+                    GlobalVariables.P = ProgramCounter.substring(2);
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                     last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
                     return last_executed;
                 }
             case "CZ":
                 // CZ
                 if (GlobalVariables.B6_Z.equals("01")) {
-                    stack = address;
-                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(address) + 2];
-                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(address) + 1];
+                    GlobalVariables.S = ProgramCounter.substring(0, 2);
+                    GlobalVariables.P = ProgramCounter.substring(2);
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                     last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
                     return last_executed;
                 }
@@ -682,6 +691,82 @@ class OpcodeRecognizer {
             case "DB":
                 // IN
                 return last_executed;
+            case "3C":
+                // INR A
+                GlobalVariables.A = HexadecimalAdd.adder_function(GlobalVariables.A, "01");
+                return last_executed;
+            case "04":
+                // INR B
+                GlobalVariables.B = HexadecimalAdd.adder_function(GlobalVariables.B, "01");
+                return last_executed;
+            case "0C":
+                // INR C
+                GlobalVariables.C = HexadecimalAdd.adder_function(GlobalVariables.C, "01");
+                return last_executed;
+            case "14":
+                // INR D
+                GlobalVariables.D = HexadecimalAdd.adder_function(GlobalVariables.D, "01");
+                return last_executed;
+            case "1C":
+                // INR E
+                GlobalVariables.E = HexadecimalAdd.adder_function(GlobalVariables.E, "01");
+                return last_executed;
+            case "24":
+                // INR H
+                GlobalVariables.H = HexadecimalAdd.adder_function(GlobalVariables.H, "01");
+                return last_executed;
+            case "2C":
+                // INR L
+                GlobalVariables.L = HexadecimalAdd.adder_function(GlobalVariables.L, "01");
+                return last_executed;
+            case "34":
+                // INR M
+                GlobalVariables.M = GlobalVariables.H + GlobalVariables.L;
+                GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.M)] = HexadecimalAdd.adder_function(GlobalVariables.M, "01");
+                return last_executed;
+            case "03":
+                // INX B
+                MSB = ToBinary.to_binary_function(GlobalVariables.B);
+                LSB = ToBinary.to_binary_function(GlobalVariables.C);
+                String INR_INT = Integer.toHexString(Integer.parseInt(MSB + LSB, 2) + 1);
+                SUM_STRING = "0000".substring(INR_INT.length()) + INR_INT;
+                GlobalVariables.H = SUM_STRING.substring(0, 2).toUpperCase();
+                GlobalVariables.L = SUM_STRING.substring(2).toUpperCase();
+                return last_executed;
+            case "13":
+                // INX D
+                MSB = ToBinary.to_binary_function(GlobalVariables.D);
+                LSB = ToBinary.to_binary_function(GlobalVariables.E);
+                INR_INT = Integer.toHexString(Integer.parseInt(MSB + LSB, 2) + 1);
+                SUM_STRING = "0000".substring(INR_INT.length()) + INR_INT;
+                GlobalVariables.H = SUM_STRING.substring(0, 2).toUpperCase();
+                GlobalVariables.L = SUM_STRING.substring(2).toUpperCase();
+                return last_executed;
+            case "23":
+                // INX H
+                MSB = ToBinary.to_binary_function(GlobalVariables.B);
+                LSB = ToBinary.to_binary_function(GlobalVariables.C);
+                INR_INT = Integer.toHexString(Integer.parseInt(MSB + LSB, 2) + 1);
+                SUM_STRING = "0000".substring(INR_INT.length()) + INR_INT;
+                GlobalVariables.H = SUM_STRING.substring(0, 2).toUpperCase();
+                GlobalVariables.L = SUM_STRING.substring(2).toUpperCase();
+                return last_executed;
+            case "33":
+                // INX SP
+                MSB = ToBinary.to_binary_function(GlobalVariables.S);
+                LSB = ToBinary.to_binary_function(GlobalVariables.P);
+                INR_INT = Integer.toHexString(Integer.parseInt(MSB + LSB, 2) + 1);
+                SUM_STRING = "0000".substring(INR_INT.length()) + INR_INT;
+                GlobalVariables.H = SUM_STRING.substring(0, 2).toUpperCase();
+                GlobalVariables.L = SUM_STRING.substring(2).toUpperCase();
+                return last_executed;
+            case "DA":
+                // JC
+                if (GlobalVariables.B0_CY.equals("01")) {
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                    last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
+                }
             default:
                 return last_executed;
         }
