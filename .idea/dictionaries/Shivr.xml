@@ -3,6 +3,8 @@
     <words>
       <w>exmem</w>
       <w>exreg</w>
+      <w>ldax</w>
+      <w>lhld</w>
       <w>mnemo</w>
     </words>
   </dictionary>

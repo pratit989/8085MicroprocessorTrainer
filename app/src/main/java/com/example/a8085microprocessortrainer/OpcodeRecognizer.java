@@ -767,6 +767,104 @@ class OpcodeRecognizer {
                     GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                     last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
                 }
+                return last_executed;
+            case "FA":
+                // JM
+                if (GlobalVariables.B7_S.equals("01")) {
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                    last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
+                }
+                return last_executed;
+            case "C3":
+                // JMP
+                GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
+                return last_executed;
+            case "D2":
+                // JNC
+                if (GlobalVariables.B0_CY.equals("00")) {
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                    last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
+                }
+                return last_executed;
+            case "C2":
+                // JNZ
+                if (GlobalVariables.B6_Z.equals("00")) {
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                    last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
+                }
+                return last_executed;
+            case "F2":
+                // JP
+                if (GlobalVariables.B7_S.equals("00")) {
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                    last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
+                }
+                return last_executed;
+            case "EA":
+                // JPE
+                if (GlobalVariables.B2_P.equals("01")) {
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                    last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
+                }
+                return last_executed;
+            case "E2":
+                // JPO
+                if (GlobalVariables.B2_P.equals("00")) {
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                    last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
+                }
+                return last_executed;
+            case "CA":
+                // JZ
+                if (GlobalVariables.B6_Z.equals("01")) {
+                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                    last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
+                }
+                return last_executed;
+            case "3A":
+                // LDA
+                GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                GlobalVariables.A = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.H + GlobalVariables.L)];
+            case "0A":
+                // LDAX B
+                GlobalVariables.A = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.B + GlobalVariables.C)];
+            case "1A":
+                // LDAX D
+                GlobalVariables.A = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.D + GlobalVariables.E)];
+            case "2A":
+                // LHLD
+                GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.H + GlobalVariables.L) + 1];
+                GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.H + GlobalVariables.L)];
+            case "01":
+                // LXI B
+                GlobalVariables.B = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                GlobalVariables.C = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+            case "11":
+                // LXI D
+                GlobalVariables.D = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                GlobalVariables.E = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+            case "21":
+                // LXI H
+                GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+            case "31":
+                // LXI SP
+                GlobalVariables.S = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
+                GlobalVariables.P = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+            case "7F":
+                // MOV A,A
             default:
                 return last_executed;
         }
