@@ -835,34 +835,47 @@ class OpcodeRecognizer {
                 GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
                 GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                 GlobalVariables.A = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.H + GlobalVariables.L)];
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 2);
             case "0A":
                 // LDAX B
                 GlobalVariables.A = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.B + GlobalVariables.C)];
+                return last_executed;
             case "1A":
                 // LDAX D
                 GlobalVariables.A = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.D + GlobalVariables.E)];
+                return last_executed;
             case "2A":
                 // LHLD
                 GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
                 GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                 GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.H + GlobalVariables.L) + 1];
                 GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.H + GlobalVariables.L)];
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 2);
+                return last_executed;
             case "01":
                 // LXI B
                 GlobalVariables.B = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
                 GlobalVariables.C = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 2);
+                return last_executed;
             case "11":
                 // LXI D
                 GlobalVariables.D = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
                 GlobalVariables.E = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 2);
+                return last_executed;
             case "21":
                 // LXI H
                 GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
                 GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 2);
+                return last_executed;
             case "31":
                 // LXI SP
                 GlobalVariables.S = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
                 GlobalVariables.P = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 2);
+                return last_executed;
             case "7F":
                 // MOV A,A
             default:
