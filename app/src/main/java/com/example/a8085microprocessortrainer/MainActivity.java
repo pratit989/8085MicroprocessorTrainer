@@ -35,23 +35,6 @@ public class MainActivity extends AppCompatActivity {
             GlobalVariables.F = "44";
             GlobalVariables.H = "00";
             GlobalVariables.L = "FB";
-            GlobalVariables.memory_space[2000] = "21";
-            GlobalVariables.memory_space[2001] = "15";
-            GlobalVariables.memory_space[2002] = "20";
-            GlobalVariables.memory_space[2003] = "46";
-            GlobalVariables.memory_space[2004] = "23";
-            GlobalVariables.memory_space[2005] = "97";
-            GlobalVariables.memory_space[2006] = "86";
-            GlobalVariables.memory_space[2007] = "05";
-            GlobalVariables.memory_space[2008] = "C2";
-            GlobalVariables.memory_space[2009] = "06";
-            GlobalVariables.memory_space[2010] = "20";
-            GlobalVariables.memory_space[2011] = "32";
-            GlobalVariables.memory_space[2012] = "20";
-            GlobalVariables.memory_space[2013] = "20";
-            GlobalVariables.memory_space[2014] = "EF";
-            GlobalVariables.memory_space[2015] = "04";
-            GlobalVariables.memory_space[2016] = "05";
         }
     }
 
@@ -284,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
                     current = "h";
                     break;
                 case "EXMEM":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("8");
                     } else {
                         view1.append("8");
@@ -299,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case "go":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("8");
                     } else if (view1.getText().length() < 4) {
                         view1.append("8");
@@ -324,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
                     counter = 0;
                     break;
                 case "EXMEM":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("9");
                     } else {
                         view1.append("9");
@@ -339,7 +322,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case "go":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("9");
                     } else if (view1.getText().length() < 4) {
                         view1.append("9");
@@ -550,7 +533,7 @@ public class MainActivity extends AppCompatActivity {
             TextView view2 = findViewById(R.id.textView2);
             switch (current) {
                 case "EXMEM":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("0");
                     } else {
                         view1.append("0");
@@ -565,7 +548,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case "go":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("0");
                     } else if (view1.getText().length() < 4) {
                         view1.append("0");
@@ -585,7 +568,7 @@ public class MainActivity extends AppCompatActivity {
             TextView view2 = findViewById(R.id.textView2);
             switch (current) {
                 case "EXMEM":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("1");
                     } else {
                         view1.append("1");
@@ -600,7 +583,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case "go":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("1");
                     } else if (view1.getText().length() < 4) {
                         view1.append("1");
@@ -620,7 +603,7 @@ public class MainActivity extends AppCompatActivity {
             TextView view2 = findViewById(R.id.textView2);
             switch (current) {
                 case "EXMEM":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("2");
                     } else {
                         view1.append("2");
@@ -635,7 +618,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case "go":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("2");
                     } else if (view1.getText().length() < 4) {
                         view1.append("2");
@@ -655,7 +638,7 @@ public class MainActivity extends AppCompatActivity {
             TextView view2 = findViewById(R.id.textView2);
             switch (current) {
                 case "EXMEM":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("3");
                     } else {
                         view1.append("3");
@@ -670,7 +653,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case "go":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("3");
                     } else if (view1.getText().length() < 4) {
                         view1.append("3");
@@ -690,7 +673,7 @@ public class MainActivity extends AppCompatActivity {
             TextView view2 = findViewById(R.id.textView2);
             switch (current) {
                 case "EXMEM":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("4");
                     } else {
                         view1.append("4");
@@ -705,7 +688,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case "go":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("4");
                     } else if (view1.getText().length() < 4) {
                         view1.append("4");
@@ -725,7 +708,7 @@ public class MainActivity extends AppCompatActivity {
             TextView view2 = findViewById(R.id.textView2);
             switch (current) {
                 case "EXMEM":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("5");
                     } else {
                         view1.append("5");
@@ -740,7 +723,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case "go":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("5");
                     } else if (view1.getText().length() < 4) {
                         view1.append("5");
@@ -760,7 +743,7 @@ public class MainActivity extends AppCompatActivity {
             TextView view2 = findViewById(R.id.textView2);
             switch (current) {
                 case "EXMEM":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("6");
                     } else {
                         view1.append("6");
@@ -775,7 +758,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case "go":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("6");
                     } else if (view1.getText().length() < 4) {
                         view1.append("6");
@@ -795,7 +778,7 @@ public class MainActivity extends AppCompatActivity {
             TextView view2 = findViewById(R.id.textView2);
             switch (current) {
                 case "EXMEM":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("7");
                     } else {
                         view1.append("7");
@@ -810,7 +793,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case "go":
-                    if (view1.getText().toString().equals(".")) {
+                    if (view1.getText().toString().equals(".") || view1.getText().toString().length() == 4) {
                         view1.setText("7");
                     } else if (view1.getText().length() < 4) {
                         view1.append("7");

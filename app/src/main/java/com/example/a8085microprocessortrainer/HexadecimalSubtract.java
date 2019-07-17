@@ -116,7 +116,9 @@ class HexadecimalSubtract {
             GlobalVariables.F = "00";
         }
         SUB_STRING = "0000".substring(Integer.toHexString(Integer.parseInt(SUB_STRING,2)).length()) + Integer.toHexString(Integer.parseInt(SUB_STRING,2));
+        //noinspection UnusedAssignment
         a = SUB_STRING.substring(0,2).toUpperCase();
+        //noinspection UnusedAssignment
         b = SUB_STRING.substring(2).toUpperCase();
     }
 }
