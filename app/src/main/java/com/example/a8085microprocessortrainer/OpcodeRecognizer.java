@@ -1162,6 +1162,11 @@ class OpcodeRecognizer {
                 GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.H + GlobalVariables.L)] = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                 last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 1);
                 return last_executed;
+            case "32":
+                // STA
+                String address = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2] + GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
+                GlobalVariables.memory_space[Integer.parseInt(address)] = GlobalVariables.A;
+                return last_executed;
             default:
                 return last_executed;
         }
