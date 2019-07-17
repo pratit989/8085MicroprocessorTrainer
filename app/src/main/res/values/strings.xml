@@ -31,4 +31,9 @@
     <string name="default_keyword1">-Scb</string>
     <string name="default_keyword2">85</string>
     <string name="error">ErOr</string>
+    <string name="dialog_message">Welcome to Alert Dialog</string>
+    <string name="dialog_title">Javatpoint Alert Dialog</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="copyright">© Pratit Todkar</string>
 </resources>

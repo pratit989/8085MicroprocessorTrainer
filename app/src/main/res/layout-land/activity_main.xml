@@ -10,6 +10,29 @@
     android:textAlignment="textEnd"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="119dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="false"
+        android:elegantTextHeight="true"
+        android:ems="10"
+        android:focusableInTouchMode="false"
+        android:freezesText="true"
+        android:includeFontPadding="false"
+        android:inputType="textPersonName"
+        android:linksClickable="false"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:text="@string/copyright"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/button30"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/button46"
         android:layout_width="0dp"

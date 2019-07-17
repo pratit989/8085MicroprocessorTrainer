@@ -611,43 +611,43 @@ class OpcodeRecognizer {
                 return last_executed;
             case "3D":
                 // DCR A
-                hex = HexadecimalSubtract.Subtract(GlobalVariables.A).toUpperCase();
+                hex = HexadecimalSubtract.Subtract(GlobalVariables.A, "01").toUpperCase();
                 hex = "00".substring(hex.length()) + hex;
                 GlobalVariables.A = hex;
                 return last_executed;
             case "05":
                 // DCR B
-                hex = HexadecimalSubtract.Subtract(GlobalVariables.B).toUpperCase();
+                hex = HexadecimalSubtract.Subtract(GlobalVariables.B, "01").toUpperCase();
                 hex = "00".substring(hex.length()) + hex;
                 GlobalVariables.B = hex;
                 return last_executed;
             case "0D":
                 // DCR C
-                hex = HexadecimalSubtract.Subtract(GlobalVariables.C).toUpperCase();
+                hex = HexadecimalSubtract.Subtract(GlobalVariables.C, "01").toUpperCase();
                 hex = "00".substring(hex.length()) + hex;
                 GlobalVariables.C = hex;
                 return last_executed;
             case "15":
                 // DCR D
-                hex = HexadecimalSubtract.Subtract(GlobalVariables.D).toUpperCase();
+                hex = HexadecimalSubtract.Subtract(GlobalVariables.D, "01").toUpperCase();
                 hex = "00".substring(hex.length()) + hex;
                 GlobalVariables.D = hex;
                 return last_executed;
             case "1D":
                 // DCR E
-                hex = HexadecimalSubtract.Subtract(GlobalVariables.E).toUpperCase();
+                hex = HexadecimalSubtract.Subtract(GlobalVariables.E, "01").toUpperCase();
                 hex = "00".substring(hex.length()) + hex;
                 GlobalVariables.E = hex;
                 return last_executed;
             case "25":
                 // DCR H
-                hex = HexadecimalSubtract.Subtract(GlobalVariables.H).toUpperCase();
+                hex = HexadecimalSubtract.Subtract(GlobalVariables.H, "01").toUpperCase();
                 hex = "00".substring(hex.length()) + hex;
                 GlobalVariables.H = hex;
                 return last_executed;
             case "2D":
                 // DCR L
-                hex = HexadecimalSubtract.Subtract(GlobalVariables.L).toUpperCase();
+                hex = HexadecimalSubtract.Subtract(GlobalVariables.L, "01").toUpperCase();
                 hex = "00".substring(hex.length()) + hex;
                 GlobalVariables.L = hex;
                 return last_executed;
@@ -656,7 +656,7 @@ class OpcodeRecognizer {
                 GlobalVariables.M = GlobalVariables.H + GlobalVariables.L;
                 // Getting Data from M memory location
                 M_DATA = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.M)];
-                hex = HexadecimalSubtract.Subtract(M_DATA).toUpperCase();
+                hex = HexadecimalSubtract.Subtract(M_DATA, "01").toUpperCase();
                 hex = "00".substring(hex.length()) + hex;
                 GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.M)] = hex;
                 return last_executed;
@@ -744,8 +744,8 @@ class OpcodeRecognizer {
                 return last_executed;
             case "23":
                 // INX H
-                MSB = ToBinary.to_binary_function(GlobalVariables.B);
-                LSB = ToBinary.to_binary_function(GlobalVariables.C);
+                MSB = ToBinary.to_binary_function(GlobalVariables.H);
+                LSB = ToBinary.to_binary_function(GlobalVariables.L);
                 INR_INT = Integer.toHexString(Integer.parseInt(MSB + LSB, 2) + 1);
                 SUM_STRING = "0000".substring(INR_INT.length()) + INR_INT;
                 GlobalVariables.H = SUM_STRING.substring(0, 2).toUpperCase();
@@ -793,9 +793,7 @@ class OpcodeRecognizer {
             case "C2":
                 // JNZ
                 if (GlobalVariables.B6_Z.equals("00")) {
-                    GlobalVariables.H = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2];
-                    GlobalVariables.L = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
-                    last_executed = Integer.toString(Integer.parseInt(GlobalVariables.H + GlobalVariables.L) - 1);
+                    last_executed = Integer.toString(Integer.parseInt(GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2] + GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1]) - 1);
                 }
                 return last_executed;
             case "F2":
@@ -1166,6 +1164,39 @@ class OpcodeRecognizer {
                 // STA
                 String address = GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 2] + GlobalVariables.memory_space[Integer.parseInt(ProgramCounter) + 1];
                 GlobalVariables.memory_space[Integer.parseInt(address)] = GlobalVariables.A;
+                last_executed = Integer.toString(Integer.parseInt(ProgramCounter) + 2);
+                return last_executed;
+            case "97":
+                // SUB A
+                GlobalVariables.A = HexadecimalSubtract.Subtract(GlobalVariables.A, GlobalVariables.A);
+                return last_executed;
+            case "90":
+                // SUB B
+                GlobalVariables.A = HexadecimalSubtract.Subtract(GlobalVariables.A, GlobalVariables.B);
+                return last_executed;
+            case "91":
+                // SUB C
+                GlobalVariables.A = HexadecimalSubtract.Subtract(GlobalVariables.A, GlobalVariables.C);
+                return last_executed;
+            case "92":
+                // SUB D
+                GlobalVariables.A = HexadecimalSubtract.Subtract(GlobalVariables.A, GlobalVariables.D);
+                return last_executed;
+            case "93":
+                // SUB E
+                GlobalVariables.A = HexadecimalSubtract.Subtract(GlobalVariables.A, GlobalVariables.E);
+                return last_executed;
+            case "94":
+                // SUB H
+                GlobalVariables.A = HexadecimalSubtract.Subtract(GlobalVariables.A, GlobalVariables.H);
+                return last_executed;
+            case "95":
+                // SUB L
+                GlobalVariables.A = HexadecimalSubtract.Subtract(GlobalVariables.A, GlobalVariables.L);
+                return last_executed;
+            case "96":
+                // SUB M
+                GlobalVariables.A = HexadecimalSubtract.Subtract(GlobalVariables.A, GlobalVariables.H + GlobalVariables.L);
                 return last_executed;
             default:
                 return last_executed;

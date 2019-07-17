@@ -32,7 +32,7 @@ class HexadecimalAdd {
         int final1 = Integer.parseInt(temp, 2);
 
         // Decimal to Hexadecimal
-        GlobalVariables.final_sum = Integer.toHexString(final1).toUpperCase();
+        GlobalVariables.final_sum = "00".substring(Integer.toHexString(final1).length()) + Integer.toHexString(final1).toUpperCase();
         // GlobalVariables.final_sum = "0000".substring(GlobalVariables.final_sum.length()) + GlobalVariables.final_sum;
 
         // Parity Check
@@ -51,9 +51,9 @@ class HexadecimalAdd {
         }
         // Setting Zero Flag
         if (final1 != 0) {
-            GlobalVariables.B6_Z = "01";
-        } else {
             GlobalVariables.B6_Z = "00";
+        } else {
+            GlobalVariables.B6_Z = "01";
         }
         // Setting Sign Flag
         if (stringBuffer.toString().substring(7).equals("1")) {

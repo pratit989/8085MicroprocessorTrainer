@@ -1,5 +1,6 @@
 package com.example.a8085microprocessortrainer;
 
+
 class HexadecimalSubtract {
 
     static void Compare(String num1, String num2)
@@ -46,27 +47,27 @@ class HexadecimalSubtract {
         }
     }
 
-    static String Subtract(String num1)
+    static String Subtract(String num1, String num2)
     {
         String add_zero = "";
         String num1_Binary = ToBinary.to_binary_function(num1);
-        String num2_Binary = ToBinary.to_binary_function("01");
-        int num1_Decimal = Integer.parseInt(num1_Binary,2);
-        int num2_Decimal = Integer.parseInt(num2_Binary,2);
-        if (num1_Decimal==num2_Decimal) {
+        String num2_Binary = ToBinary.to_binary_function(num2);
+        int num1_Decimal = Integer.parseInt(num1_Binary, 2);
+        int num2_Decimal = Integer.parseInt(num2_Binary, 2);
+        if (num1_Decimal == num2_Decimal) {
             GlobalVariables.B6_Z = "01";
             add_zero = "0";
         }
         int difference = num1_Decimal - num2_Decimal;
         if (difference < 0) {
             GlobalVariables.B7_S = "01";
-            difference = difference*-1;
+            difference = difference * -1;
         } else {
             GlobalVariables.B7_S = "00";
         }
         int count = 0;
-        for (int i = 0; i < ToBinary.to_binary_function(Integer.toHexString(difference)+add_zero).length(); i++) {
-            if (ToBinary.to_binary_function(Integer.toHexString(difference)+add_zero).charAt(i) == '1') {
+        for (int i = 0; i < ToBinary.to_binary_function(Integer.toHexString(difference) + add_zero).length(); i++) {
+            if (ToBinary.to_binary_function(Integer.toHexString(difference) + add_zero).charAt(i) == '1') {
                 count++;
             }
         }
@@ -81,7 +82,7 @@ class HexadecimalSubtract {
         } else {
             GlobalVariables.F = "00";
         }
-        return Integer.toHexString(difference);
+        return "00".substring(Integer.toHexString(difference).length()) + Integer.toHexString(difference).toUpperCase();
     }
     static void Decrement_16Bit(String a, String b)
     {
