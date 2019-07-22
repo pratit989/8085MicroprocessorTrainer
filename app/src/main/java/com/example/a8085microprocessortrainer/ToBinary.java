@@ -56,7 +56,12 @@ class ToBinary {
                 default:
                     val = parseInt(values[i]);
             }
-            String val_string = "0000".substring(toBinaryString(val).length()) + toBinaryString(val);
+            String val_string;
+            if (toBinaryString(val).length() <= 4) {
+                val_string = "0000".substring(toBinaryString(val).length()) + toBinaryString(val);
+            } else {
+                val_string = toBinaryString(val);
+            }
             final_string.append(val_string);
         }
         final_value = final_string.toString();
@@ -70,15 +75,23 @@ class ToBinary {
         // Converting Binary String to 8 bit Array
         private static void bit_separator_function(String binary1, int[] num)
         {
+            if (num == GlobalVariables.num1) {
+                GlobalVariables.num1 = new int[binary1.length()];
+                num = GlobalVariables.num1;
+            } else {
+                GlobalVariables.num2 = new int[binary1.length()];
+                num = GlobalVariables.num2;
+            }
             Arrays.fill(num, 0);
             int i;
             bin = binary1.split("");
             bin = Arrays.copyOfRange(bin, 1, bin.length);
-            for (i = 0; i < 8;)
+            for (i = 0; i < binary1.length(); )
             {
                 try {
                     num[i] = parseInt(bin[i]);
-                }catch (Exception ignored){
+                } catch (Exception e) {
+                    continue;
                 }
                 i++;
             }

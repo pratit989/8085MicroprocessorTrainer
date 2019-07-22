@@ -2,7 +2,7 @@ package com.example.a8085microprocessortrainer;
 
 class GlobalVariables {
     // Memory
-    static String[] memory_space = new String[9999];
+    static String[] memory_space = new String[64000];
 
     // Registers
     static String A = "CC", B = "FF", C = "2A", D = "00", E = "7B", F = "44", H = "00", L = "FB";
@@ -20,8 +20,8 @@ class GlobalVariables {
     static String carry_in, carry_out;
 
     // 1-Byte Arrays
-    static int[] num1 = new int[8];
-    static int[] num2 = new int[8];
+    static int[] num1;
+    static int[] num2;
     static int[] sum;
     static int Interrupt_Enable = 0;
 

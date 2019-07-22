@@ -22,7 +22,7 @@ class HexadecimalAdd {
 
         // Array to String
         StringBuilder stringBuffer = new StringBuilder(GlobalVariables.final_sum);
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < GlobalVariables.sum.length; i++) {
             stringBuffer.append(GlobalVariables.sum[i]);
         }
         String temp = stringBuffer.toString();
@@ -56,7 +56,7 @@ class HexadecimalAdd {
             GlobalVariables.B6_Z = "01";
         }
         // Setting Sign Flag
-        if (stringBuffer.toString().substring(7).equals("1")) {
+        if (stringBuffer.toString().substring(0, 1).equals("1")) {
             GlobalVariables.B7_S = "01";
         } else {
             GlobalVariables.B7_S = "00";
@@ -92,7 +92,11 @@ class HexadecimalAdd {
     static class half_adder {
 
         static void half_adder_function(int[] a, int[] b) {
-            GlobalVariables.sum = new int[a.length];
+            if (a.length == b.length || a.length > b.length) {
+                GlobalVariables.sum = new int[a.length];
+            } else {
+                GlobalVariables.sum = new int[b.length];
+            }
             Arrays.fill(GlobalVariables.sum,0);
             GlobalVariables.carry_in = "00";
             try {

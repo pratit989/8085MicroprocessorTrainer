@@ -35,6 +35,23 @@ public class MainActivity extends AppCompatActivity {
             GlobalVariables.F = "44";
             GlobalVariables.H = "00";
             GlobalVariables.L = "FB";
+            GlobalVariables.memory_space[8192] = "21";
+            GlobalVariables.memory_space[8193] = "14";
+            GlobalVariables.memory_space[8194] = "20";
+            GlobalVariables.memory_space[8195] = "46";
+            GlobalVariables.memory_space[8196] = "23";
+            GlobalVariables.memory_space[8197] = "97";
+            GlobalVariables.memory_space[8198] = "86";
+            GlobalVariables.memory_space[8199] = "05";
+            GlobalVariables.memory_space[8200] = "C2";
+            GlobalVariables.memory_space[8201] = "06";
+            GlobalVariables.memory_space[8202] = "20";
+            GlobalVariables.memory_space[8203] = "32";
+            GlobalVariables.memory_space[8204] = "20";
+            GlobalVariables.memory_space[8205] = "20";
+            GlobalVariables.memory_space[8206] = "EF";
+            GlobalVariables.memory_space[8212] = "04";
+            GlobalVariables.memory_space[8213] = "05";
         }
     }
 
@@ -86,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("A");
                     } else {
                         view2.append("A");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 default:
@@ -118,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("B");
                     } else {
                         view2.append("B");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 default:
@@ -150,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("C");
                     } else {
                         view2.append("C");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 default:
@@ -182,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("D");
                     } else {
                         view2.append("D");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 default:
@@ -214,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("E");
                     } else {
                         view2.append("E");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 default:
@@ -246,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("F");
                     } else {
                         view2.append("F");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 default:
@@ -278,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("8");
                     } else {
                         view2.append("8");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 case "go":
@@ -318,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("9");
                     } else {
                         view2.append("9");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 case "go":
@@ -342,22 +359,22 @@ public class MainActivity extends AppCompatActivity {
             if (view1.getText().length() == 4 && current.equals("EXMEM")) {
                 current = "EXMEM NEXT";
                 try {
-                    String memory_address_input = view1.getText().toString();
-                    int memory_address_output = Integer.parseInt(memory_address_input);
+                    String memory_address_input = Integer.toHexString(Integer.parseInt(view1.getText().toString(), 16));
+                    int memory_address_output = Integer.parseInt(memory_address_input, 16);
                     view2.setText(GlobalVariables.memory_space[memory_address_output]);
                 } catch (Exception e) {
                     view1.setText(R.string.error);
                     view2.setText("");
                 }
             } else if (view2.getText().length() == 2 && current.equals("EXMEM NEXT") && view1.getText().length() == 4) {
-                String memory_address_input = view1.getText().toString();
-                int memory_address_output = Integer.parseInt(memory_address_input);
+                String memory_address_input = Integer.toHexString(Integer.parseInt(view1.getText().toString(), 16));
+                int memory_address_output = Integer.parseInt(memory_address_input, 16);
                 GlobalVariables.memory_space[memory_address_output] = view2.getText().toString();
                 try {
                     counter = memory_address_output;
                     if (counter < 64000) {
                         counter++;
-                        memory_address_input = "0000".substring(Integer.toString(counter).length()) + counter;
+                        memory_address_input = "0000".substring(Integer.toHexString(counter).length()) + Integer.toHexString(counter).toUpperCase();
                         view1.setText(memory_address_input);
                         view2.setText(GlobalVariables.memory_space[counter]);
                     } else {
@@ -405,7 +422,7 @@ public class MainActivity extends AppCompatActivity {
                         current = "l";
                         break;
                     case "l":
-                        String memory_address = Integer.toString(counter);
+                        String memory_address = Integer.toHexString(counter);
                         String data = GlobalVariables.memory_space[counter];
                         view1.setText(memory_address);
                         view2.setText(data);
@@ -436,14 +453,14 @@ public class MainActivity extends AppCompatActivity {
                 view1.setText(R.string.error);
                 view2.setText("");
             } else if (view2.getText().length() == 2 && current.equals("EXMEM NEXT") && view1.getText().length() == 4) {
-                String memory_address_input = view1.getText().toString();
-                int memory_address_output = Integer.parseInt(memory_address_input);
+                String memory_address_input = Integer.toHexString(Integer.parseInt(view1.getText().toString(), 16));
+                int memory_address_output = Integer.parseInt(memory_address_input, 16);
                 GlobalVariables.memory_space[memory_address_output] = view2.getText().toString();
                 try {
                     counter = memory_address_output;
                     if (counter > 0) {
                         counter--;
-                        memory_address_input = "0000".substring(Integer.toString(counter).length()) + counter;
+                        memory_address_input = "0000".substring(Integer.toHexString(counter).length()) + Integer.toHexString(counter).toUpperCase();
                         view1.setText(memory_address_input);
                         view2.setText(GlobalVariables.memory_space[counter]);
                     } else {
@@ -494,7 +511,7 @@ public class MainActivity extends AppCompatActivity {
                                 counter = 0;
                                 memory = 0;
                             } else {
-                                String memory_address = Integer.toString(counter - 2);
+                                String memory_address = Integer.toHexString(counter - 2);
                                 String data = GlobalVariables.memory_space[counter - 2];
                                 view1.setText(memory_address);
                                 view2.setText(data);
@@ -544,7 +561,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("0");
                     } else {
                         view2.append("0");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 case "go":
@@ -579,7 +596,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("1");
                     } else {
                         view2.append("1");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 case "go":
@@ -614,7 +631,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("2");
                     } else {
                         view2.append("2");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 case "go":
@@ -649,7 +666,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("3");
                     } else {
                         view2.append("3");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 case "go":
@@ -684,7 +701,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("4");
                     } else {
                         view2.append("4");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 case "go":
@@ -719,7 +736,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("5");
                     } else {
                         view2.append("5");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 case "go":
@@ -754,7 +771,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("6");
                     } else {
                         view2.append("6");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 case "go":
@@ -789,7 +806,7 @@ public class MainActivity extends AppCompatActivity {
                         view2.setText("7");
                     } else {
                         view2.append("7");
-                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString())] = view2.getText().toString();
+                        GlobalVariables.memory_space[Integer.parseInt(view1.getText().toString(), 16)] = view2.getText().toString();
                     }
                     break;
                 case "go":
@@ -812,18 +829,18 @@ public class MainActivity extends AppCompatActivity {
             TextView view1 = findViewById(R.id.textView);
             TextView view2 = findViewById(R.id.textView2);
             if (current.equals("EXMEM NEXT") && view1.getText().length() == 4 && view2.getText().length() == 2) {
-                String memory_address_input = view1.getText().toString();
-                int memory_address_output = Integer.parseInt(memory_address_input);
+                String memory_address_input = Integer.toHexString(Integer.parseInt(view1.getText().toString(), 16));
+                int memory_address_output = Integer.parseInt(memory_address_input, 16);
                 GlobalVariables.memory_space[memory_address_output] = view2.getText().toString();
                 view1.setText(".");
                 view2.setText("");
                 current = ".";
             } else if (current.equals("go") && view1.getText().length() == 4) {
                 GlobalVariables.starting_address = view1.getText().toString();
-                GlobalVariables.data = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.starting_address)];
+                GlobalVariables.data = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.starting_address, 16)];
                 for (; !GlobalVariables.data.equals("EF") && !current.equals("HLT"); ) {
-                    GlobalVariables.starting_address = Integer.toString(Integer.parseInt(OpcodeRecognizer.opcode_switch(GlobalVariables.data, GlobalVariables.starting_address)) + 1);
-                    GlobalVariables.data = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.starting_address)];
+                    GlobalVariables.starting_address = Integer.toHexString(Integer.parseInt(OpcodeRecognizer.opcode_switch(GlobalVariables.data, GlobalVariables.starting_address), 16) + 1);
+                    GlobalVariables.data = GlobalVariables.memory_space[Integer.parseInt(GlobalVariables.starting_address, 16)];
                 }
             }
         }
